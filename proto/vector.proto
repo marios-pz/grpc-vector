@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package vector;
+
+option go_package = "./pb";
+
+service Vector {
+  rpc InnerProduct(VectorInput) returns (VectorProductResult);
+  rpc AverageValues(VectorInput) returns (VectorResult);
+  rpc ScalarVectorProduct(VectorInput) returns (VectorResult);
+}
+
+message VectorInput {
+  repeated int64 x = 2;
+  repeated int64 y = 3;
+  float r = 4;
+}
+
+message VectorProductResult { int64 result = 1; }
+
+message VectorResult {
+  float a = 1;
+  float b = 2;
+}
